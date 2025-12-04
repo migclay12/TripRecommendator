@@ -1,21 +1,88 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  min-height: 100vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.main-page {
+  @apply min-h-screen bg-slate-900 text-slate-100 flex flex-col;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.main-header {
+  @apply border-b border-slate-800 px-4 py-3;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.main-title {
+  @apply text-xl font-semibold;
+}
+
+.main-subtitle {
+  @apply text-sm text-slate-300;
+}
+
+.app-main {
+  @apply flex-1 px-4 py-4 space-y-4;
+}
+
+/* searchbar */
+.search-section {
+  @apply w-full;
+}
+
+.search-label {
+  @apply block text-sm font-medium mb-1;
+}
+
+.search-textarea {
+  @apply w-full rounded-md border border-slate-700 bg-slate-800 p-2 text-sm
+    focus:outline-none focus:ring-2 focus:ring-emerald-500;
+}
+
+.search-button {
+  @apply mt-2 inline-flex items-center justify-center rounded-md bg-emerald-500
+    px-4 py-2 text-sm font-medium text-slate-900 hover:bg-emerald-400
+    focus:outline-none focus:ring-2 focus:ring-emerald-500;
+}
+
+/* Resultados: lista + mapa */
+.results-layout {
+  @apply grid gap-4 md:grid-cols-2 md:items-start;
+}
+
+.results-list {
+  @apply space-y-2;
+}
+
+.results-title {
+  @apply text-lg font-semibold;
+}
+
+.results-hint {
+  @apply text-xs text-slate-400;
+}
+
+.results-items {
+  @apply space-y-2;
+}
+
+.destination-card {
+  @apply rounded-md border border-slate-700 bg-slate-800 p-3;
+}
+
+.destination-title {
+  @apply text-sm font-semibold;
+}
+
+.destination-country {
+  @apply text-xs text-slate-400;
+}
+
+.destination-description {
+  @apply text-xs text-slate-300 mt-1;
+}
+
+/* Placeholder del mapa */
+.map-placeholder {
+  @apply h-64 md:h-80 rounded-md border border-slate-700 bg-slate-800
+    flex items-center justify-center text-sm text-slate-400;
 }
 
 @keyframes logo-spin {
@@ -31,12 +98,4 @@
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
