@@ -3,99 +3,217 @@
 }
 
 .main-page {
-  @apply min-h-screen bg-slate-900 text-slate-100 flex flex-col;
+  @apply min-h-screen flex flex-col;
+  background-color: #1a1a1a;
+  color: #e5e5e5;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .main-header {
-  @apply border-b border-slate-800 px-4 py-3;
+  @apply border-b px-4 py-3 flex-shrink-0;
+  background-color: #252525;
+  border-color: #2d2d2d;
 }
 
 .main-title {
   @apply text-xl font-semibold;
+  color: #f5f5f5;
 }
 
 .main-subtitle {
-  @apply text-sm text-slate-300;
+  @apply text-sm;
+  color: #a3a3a3;
 }
 
-.app-main {
-  @apply flex-1 px-4 py-4 space-y-4;
+/* Chat container */
+.chat-container {
+  @apply flex flex-col flex-1 overflow-hidden;
+  background-color: #1a1a1a;
 }
 
-/* searchbar */
-.search-section {
-  @apply w-full;
+.messages-area {
+  @apply flex-1 overflow-y-auto px-4 py-4 space-y-4;
+  scroll-behavior: smooth;
+  background-color: #1a1a1a;
 }
 
-.search-label {
-  @apply block text-sm font-medium mb-1;
+.welcome-message {
+  @apply text-center py-12 px-4;
+  color: #a3a3a3;
 }
 
-.search-textarea {
-  @apply w-full rounded-md border border-slate-700 bg-slate-800 p-2 text-sm
-    focus:outline-none focus:ring-2 focus:ring-emerald-500;
+.welcome-message p {
+  @apply mb-2;
 }
 
-.search-button {
-  @apply mt-2 inline-flex items-center justify-center rounded-md bg-emerald-500
-    px-4 py-2 text-sm font-medium text-slate-900 hover:bg-emerald-400
-    focus:outline-none focus:ring-2 focus:ring-emerald-500;
+.welcome-example {
+  @apply text-sm italic mt-4;
+  color: #737373;
 }
 
-/* Resultados: lista + mapa */
-.results-layout {
-  @apply grid gap-4 md:grid-cols-2 md:items-start;
+/* Messages */
+.message {
+  @apply flex;
 }
 
-.results-list {
-  @apply space-y-2;
+.message.user {
+  @apply justify-end;
 }
 
-.results-title {
-  @apply text-lg font-semibold;
+.message.assistant {
+  @apply justify-start;
 }
 
-.results-hint {
-  @apply text-xs text-slate-400;
+.message-content {
+  @apply max-w-3xl;
 }
 
-.results-items {
+.message.user .message-content {
+  @apply ml-auto;
+}
+
+.message-bubble {
+  @apply rounded-lg px-4 py-2 mb-2;
+  @apply break-words;
+}
+
+.user-bubble {
+  background-color: #3b82f6;
+  color: #ffffff;
+  border-radius: 0.5rem 0.5rem 0.125rem 0.5rem;
+}
+
+.user-bubble:hover {
+  background-color: #2563eb;
+}
+
+.assistant-bubble {
+  background-color: #2d2d2d;
+  color: #e5e5e5;
+  border: 1px solid #404040;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.125rem;
+}
+
+.assistant-bubble.loading {
+  background-color: #2d2d2d;
+}
+
+/* Loading indicator */
+.assistant-bubble.loading {
+  color: #a3a3a3;
+  font-style: italic;
+}
+
+/* Assistant response with destinations */
+.assistant-response {
+  @apply mt-2 space-y-4;
+}
+
+.destinations-list {
   @apply space-y-2;
 }
 
 .destination-card {
-  @apply rounded-md border border-slate-700 bg-slate-800 p-3;
+  @apply rounded-md p-3;
+  background-color: #252525;
+  border: 1px solid #404040;
 }
 
 .destination-title {
   @apply text-sm font-semibold;
+  color: #f5f5f5;
 }
 
 .destination-country {
-  @apply text-xs text-slate-400;
+  @apply text-xs;
+  color: #a3a3a3;
 }
 
 .destination-description {
-  @apply text-xs text-slate-300 mt-1;
+  @apply text-xs mt-1;
+  color: #d4d4d4;
 }
 
-/* Placeholder del mapa */
-.map-placeholder {
-  @apply h-64 md:h-80 rounded-md border border-slate-700 bg-slate-800
-    flex items-center justify-center text-sm text-slate-400;
+.map-container {
+  @apply rounded-md overflow-hidden;
+  border: 1px solid #404040;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Input container */
+.input-container {
+  @apply border-t px-4 py-3 flex-shrink-0;
+  background-color: #252525;
+  border-color: #2d2d2d;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.input-wrapper {
+  @apply flex items-end gap-2 max-w-4xl mx-auto;
+}
+
+.chat-input {
+  @apply flex-1 rounded-lg p-3 text-sm resize-none;
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  color: #e5e5e5;
+  max-height: 120px;
+  min-height: 44px;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.chat-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chat-input::placeholder {
+  color: #737373;
+}
+
+.send-button {
+  @apply flex items-center justify-center rounded-lg px-4 py-3 min-w-[44px] h-[44px];
+  background-color: #3b82f6;
+  color: #ffffff;
+  transition: background-color 0.2s;
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.send-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.send-button:disabled:hover {
+  background-color: #3b82f6;
+}
+
+/* Scrollbar styling */
+.messages-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages-area::-webkit-scrollbar-track {
+  background-color: #1a1a1a;
+}
+
+.messages-area::-webkit-scrollbar-thumb {
+  background-color: #404040;
+  border-radius: 9999px;
+}
+
+.messages-area::-webkit-scrollbar-thumb:hover {
+  background-color: #525252;
 }
