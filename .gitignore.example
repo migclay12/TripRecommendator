@@ -1,0 +1,36 @@
+# Este archivo muestra qué se excluye de git
+# Los archivos que SÍ debes subir a git son:
+
+# ✅ Archivos de configuración Docker
+# - docker-compose.yml
+# - Dockerfile (en backend y frontend)
+# - .dockerignore (en backend y frontend)
+# - nginx.conf (en frontend)
+
+# ✅ Código fuente
+# - src/ (todo el código fuente)
+# - package.json y package-lock.json (necesarios para Docker)
+
+# ✅ Archivos de configuración
+# - tsconfig.json
+# - vite.config.ts
+# - tailwind.config.js
+# - postcss.config.js
+# - eslint.config.js
+# - index.html
+
+# ✅ Scripts de ayuda
+# - docker-start.sh
+# - docker-start.bat
+
+# ✅ Documentación
+# - README.Docker.md
+# - README.md (si existe)
+
+# ❌ NO subir:
+# - node_modules/ (Docker los instalará)
+# - dist/ (Docker los compilará)
+# - .env (contiene secretos)
+# - *.log (archivos de log)
+# - Archivos temporales del editor
+

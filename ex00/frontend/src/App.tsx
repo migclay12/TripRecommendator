@@ -51,7 +51,10 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3001/echo', {
+      // En producción, usar /api que será proxyado por nginx al backend
+      // En desarrollo, usar la URL completa
+      const apiUrl = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '/api' : 'http://localhost:3001');
+      const response = await fetch(`${apiUrl}/echo`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
