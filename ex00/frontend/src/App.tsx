@@ -16,7 +16,6 @@ type Message = {
   type: 'user' | 'assistant';
   content: string;
   destinations?: Destination[];
-  timestamp: Date;
 }
 
 function App() {
@@ -43,7 +42,6 @@ function App() {
       id: Date.now().toString(),
       type: 'user',
       content: inputText.trim(),
-      timestamp: new Date(),
     };
 
     setMessages(prev => [...prev, userMessage]);
@@ -51,10 +49,8 @@ function App() {
     setIsLoading(true);
 
     try {
-      // En producción, usar /api que será proxyado por nginx al backend
-      // En desarrollo, usar la URL completa
       const apiUrl = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '/api' : 'http://localhost:3001');
-      const response = await fetch(`${apiUrl}/echo`, {
+      const response = await fetch(`${apiUrl}/reply`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +67,6 @@ function App() {
           id: (Date.now() + 1).toString(),
           type: 'assistant',
           content: data.error || 'Error processing request',
-          timestamp: new Date(),
         };
         setMessages(prev => [...prev, errorMessage]);
         return;
@@ -83,7 +78,6 @@ function App() {
           type: 'assistant',
           content: `I found ${data.destinations.length} recommended destinations for you:`,
           destinations: data.destinations,
-          timestamp: new Date(),
         };
         setMessages(prev => [...prev, assistantMessage]);
       } else {
@@ -91,7 +85,6 @@ function App() {
           id: (Date.now() + 1).toString(),
           type: 'assistant',
           content: data.error || data.processedText || 'No destinations found for your search.',
-          timestamp: new Date(),
         };
         setMessages(prev => [...prev, assistantMessage]);
       }
@@ -101,7 +94,6 @@ function App() {
         id: (Date.now() + 1).toString(),
         type: 'assistant',
         content: 'Error connecting to server. Please try again.',
-        timestamp: new Date(),
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {

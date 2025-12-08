@@ -5,10 +5,7 @@
   "scripts": {
     "dev": "nodemon --exec ts-node src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js",
-    "test:gemini": "ts-node src/test-gemini.ts",
-    "list:models": "ts-node src/list-models.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",

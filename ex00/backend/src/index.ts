@@ -138,11 +138,7 @@ function getErrorMessage(error: any): { message: string; statusCode: number } {
   };
 }
 
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok', message: 'Backend is running' });
-});
-
-app.post('/echo', async (req, res) => {
+app.post('/reply', async (req, res) => {
   const userMessage = req.body.text;
 
   if (!userMessage || typeof userMessage !== 'string') {
@@ -152,12 +148,19 @@ app.post('/echo', async (req, res) => {
     });
   }
 
+  if (!GEMINI_API_KEY) {
+    return res.status(500).json({
+      error: 'Server configuration error: GEMINI_API_KEY is not defined.',
+      destinations: [],
+    });
+  }
+
   const modelsToTry = ['gemini-2.5-flash', 'gemini-1.5-pro', 'gemini-pro'];
   let lastError: any = null;
 
   for (const modelName of modelsToTry) {
     try {
-      const genAI = new GoogleGenerativeAI(GEMINI_API_KEY as string);
+      const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
       const model = genAI.getGenerativeModel({ model: modelName });
       const prompt = generatePrompt(userMessage);
 
