@@ -43,7 +43,7 @@ Un sistema inteligente de recomendaciones de viajes impulsado por Google Gemini 
 
 1. **Clona el repositorio**:
    ```bash
-   git clone <repository-url>
+   git clone git@github.com:migclay12/TripRecommendator.git
    cd TripRecommendator
    ```
 
@@ -53,11 +53,6 @@ Un sistema inteligente de recomendaciones de viajes impulsado por Google Gemini 
    ```
 
 3. **Crea un archivo `.env`**:
-   ```bash
-   echo "GEMINI_API_KEY=tu_clave_api_aqui" > .env
-   ```
-   
-   O crea manualmente el archivo `.env` con:
    ```
    GEMINI_API_KEY=tu_clave_api_aqui
    PORT=3001
@@ -92,9 +87,9 @@ Un sistema inteligente de recomendaciones de viajes impulsado por Google Gemini 
    ```
 
 3. **Crea el archivo `.env`**:
-   ```bash
-   echo "GEMINI_API_KEY=tu_clave_api_aqui" > .env
-   echo "PORT=3001" >> .env
+   ```
+   GEMINI_API_KEY=tu_clave_api_aqui
+   PORT=3001
    ```
 
 4. **Ejecuta en modo desarrollo**:
@@ -160,8 +155,7 @@ TripRecommendator/
 │   ├── docker-compose.yml        # Orquestación Docker
 │   └── docker-start.sh           # Script de inicio
 ├── README.md                      # Este archivo (inglés)
-├── README.es.md                  # Este archivo (español)
-└── README.Docker.md              # Guía detallada de Docker
+└── README.es.md                  # Este archivo (español)
 ```
 
 ## Configuración
@@ -235,20 +229,6 @@ docker-compose build --no-cache
 - `npm run lint` - Ejecutar ESLint
 - `npm run preview` - Vista previa del build de producción
 
-## Licencia
-
-ISC
-
-## Contribuir
-
-1. Haz fork del repositorio
-2. Crea una rama de características
-3. Realiza tus cambios
-4. Envía un pull request
-
 ## Soporte
 
-Para documentación detallada de Docker, consulta [README.Docker.md](README.Docker.md)
-
 Para documentación en inglés, consulta [README.md](README.md)
-

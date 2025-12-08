@@ -43,7 +43,7 @@ An intelligent travel recommendation system powered by Google Gemini AI. Describ
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
+   git clone git@github.com:migclay12/TripRecommendator.git
    cd TripRecommendator
    ```
 
@@ -53,11 +53,6 @@ An intelligent travel recommendation system powered by Google Gemini AI. Describ
    ```
 
 3. **Create a `.env` file**:
-   ```bash
-   echo "GEMINI_API_KEY=your_api_key_here" > .env
-   ```
-   
-   Or manually create `.env` file with:
    ```
    GEMINI_API_KEY=your_api_key_here
    PORT=3001
@@ -92,9 +87,9 @@ An intelligent travel recommendation system powered by Google Gemini AI. Describ
    ```
 
 3. **Create `.env` file**:
-   ```bash
-   echo "GEMINI_API_KEY=your_api_key_here" > .env
-   echo "PORT=3001" >> .env
+   ```
+   GEMINI_API_KEY=your_api_key_here
+   PORT=3001
    ```
 
 4. **Run in development mode**:
@@ -160,8 +155,7 @@ TripRecommendator/
 │   ├── docker-compose.yml        # Docker orchestration
 │   └── docker-start.sh           # Startup script
 ├── README.md                      # This file
-├── README.es.md                  # Spanish documentation
-└── README.Docker.md              # Detailed Docker guide
+└── README.es.md                  # Spanish documentation
 ```
 
 ## Configuration
@@ -235,20 +229,7 @@ docker-compose build --no-cache
 - `npm run lint` - Run ESLint
 - `npm run preview` - Preview production build
 
-## License
-
-ISC
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
 ## Support
-
-For detailed Docker documentation, see [README.Docker.md](README.Docker.md)
 
 For Spanish documentation, see [README.es.md](README.es.md)
 
