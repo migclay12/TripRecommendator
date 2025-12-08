@@ -1,9 +1,9 @@
-# Dockerfile para el frontend
+# Dockerfile for frontend
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copiar archivos de dependencias
+# Copy dependency files
 COPY package*.json ./
 COPY tsconfig*.json ./
 COPY vite.config.ts ./
@@ -11,28 +11,27 @@ COPY tailwind.config.js ./
 COPY postcss.config.js ./
 COPY eslint.config.js ./
 
-# Instalar dependencias
+# Install dependencies
 RUN npm ci
 
-# Copiar código fuente
+# Copy source code
 COPY index.html ./
-COPY public ./public
 COPY src ./src
 
-# Construir la aplicación
+# Build the application
 RUN npm run build
 
-# Imagen de producción con nginx
+# Production image with nginx
 FROM nginx:alpine
 
-# Copiar los archivos construidos al directorio de nginx
+# Copy built files to nginx directory
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copiar configuración personalizada de nginx
+# Copy custom nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Exponer el puerto 80
+# Expose port 80
 EXPOSE 80
 
-# Nginx se inicia automáticamente
+# Nginx starts automatically
 

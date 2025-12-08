@@ -5,7 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { useEffect, useState } from 'react';
 
-// Fix para los iconos de marcadores en React
+// Fix for marker icons in React
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
@@ -26,7 +26,7 @@ type MapViewProps = {
   destinations: Destination[];
 }
 
-// Componente interno para controlar el mapa y hacer zoom cuando se abre un popup
+// Internal component to control the map and zoom when a popup is opened
 function MapController({ selectedPosition }: { selectedPosition: LatLngExpression | null }) {
   const map = useMap();
   
@@ -75,9 +75,7 @@ export default function MapView({ destinations }: MapViewProps) {
   }, [destinations]);
 
   const destinationsWithCoords = destinations.filter(d => d.lat && d.lng);
-  
-  //console.log('MapView - Destinos con coordenadas:', destinationsWithCoords); // Debug
-  
+ 
   if (destinationsWithCoords.length === 0) {
     return (
       <div className="h-64 rounded-md border border-slate-700 bg-slate-800 flex items-center justify-center text-sm text-slate-400">
@@ -115,7 +113,6 @@ export default function MapView({ destinations }: MapViewProps) {
             position={[dest.lat!, dest.lng!]}
             eventHandlers={{
               click: () => {
-                // Hacer zoom al marcador cuando se hace click
                 setSelectedMarker([dest.lat!, dest.lng!]);
               }
             }}

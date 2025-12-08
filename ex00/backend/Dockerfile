@@ -1,38 +1,38 @@
-# Dockerfile para el backend
+# Dockerfile for backend
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copiar archivos de dependencias
+# Copy dependency files
 COPY package*.json ./
 COPY tsconfig.json ./
 
-# Instalar dependencias
+# Install dependencies
 RUN npm ci
 
-# Copiar código fuente
+# Copy source code
 COPY src ./src
 
-# Compilar TypeScript
+# Compile TypeScript
 RUN npm run build
 
-# Imagen de producción
+# Production image
 FROM node:20-alpine
 
 WORKDIR /app
 
-# Copiar archivos de dependencias
+# Copy dependency files
 COPY package*.json ./
 
-# Instalar solo dependencias de producción
+# Install production dependencies only
 RUN npm ci --only=production
 
-# Copiar código compilado desde el builder
+# Copy compiled code from builder
 COPY --from=builder /app/dist ./dist
 
-# Exponer el puerto
+# Expose port
 EXPOSE 3001
 
-# Comando para iniciar la aplicación
+# Command to start the application
 CMD ["node", "dist/index.js"]
 
