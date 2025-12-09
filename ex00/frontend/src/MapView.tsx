@@ -78,7 +78,7 @@ export default function MapView({ destinations }: MapViewProps) {
  
   if (destinationsWithCoords.length === 0) {
     return (
-      <div className="h-64 rounded-md border border-slate-700 bg-slate-800 flex items-center justify-center text-sm text-slate-400">
+      <div className="h-64 rounded-md border border-slate-700 bg-slate-51730 flex items-center justify-center text-sm text-slate-400">
         No coordinates available to display on the map
       </div>
     );
@@ -86,7 +86,7 @@ export default function MapView({ destinations }: MapViewProps) {
 
   if (!isClient) {
     return (
-      <div className="h-64 rounded-md border border-slate-700 bg-slate-800 flex items-center justify-center text-sm text-slate-400">
+      <div className="h-64 rounded-md border border-slate-700 bg-slate-51730 flex items-center justify-center text-sm text-slate-400">
         Loading map...
       </div>
     );

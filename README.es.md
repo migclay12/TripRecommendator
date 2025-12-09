@@ -213,7 +213,7 @@ docker-compose build --no-cache
 - Confirma que la clave esté correctamente configurada en el archivo `.env`
 
 ### Conflictos de puertos
-- Cambia los puertos en `docker-compose.yml` si 80 o 3001 están en uso
+- Cambia los puertos en `docker-compose.yml` si 5173 o 3001 están en uso
 - Actualiza la URL de la API del frontend si cambia el puerto del backend
 
 ## Desarrollo

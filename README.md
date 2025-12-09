@@ -213,7 +213,7 @@ docker-compose build --no-cache
 - Verify the key is correctly set in `.env` file
 
 ### Port conflicts
-- Change ports in `docker-compose.yml` if 80 or 3001 are in use
+- Change ports in `docker-compose.yml` if 5173 or 3001 are in use
 - Update frontend API URL if backend port changes
 
 ## Development

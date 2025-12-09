@@ -28,3 +28,7 @@ Thumbs.db
 # Cache
 .vite/
 *.tsbuildinfo
+
+# Git
+.git
+.gitignore

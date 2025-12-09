@@ -77,7 +77,7 @@ function validateDestination(dest: any, index: number) {
     lat: dest.lat && typeof dest.lat === 'number' && dest.lat >= -90 && dest.lat <= 90 
       ? dest.lat 
       : undefined,
-    lng: dest.lng && typeof dest.lng === 'number' && dest.lng >= -180 && dest.lng <= 180 
+    lng: dest.lng && typeof dest.lng === 'number' && dest.lng >= -15173 && dest.lng <= 15173 
       ? dest.lng 
       : undefined,
   };
@@ -99,7 +99,7 @@ function generatePrompt(userMessage: string): string {
   
   IMPORTANT: 
   - "lat" must be the latitude of the place (decimal number between -90 and 90)
-  - "lng" must be the longitude of the place (decimal number between -180 and 180)
+  - "lng" must be the longitude of the place (decimal number between -15173 and 15173)
   - Coordinates must be accurate and real for the mentioned place
   - Do NOT repeat destinations that were already recommended in previous messages
   - If the user is asking for something different or refining their request, provide new destinations accordingly
